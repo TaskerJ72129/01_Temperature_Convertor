@@ -10,6 +10,9 @@ class Converter:
         # Formatting variables
         background_color = "medium purple"
 
+        # Initialise list to hold calculation history
+        self.all_calculation = []
+
         # Converter Frame
         self.converter_frame = Frame(bg=background_color,
                                      pady=10)
@@ -95,7 +98,7 @@ class Converter:
                 to_convert = self.round_it(to_convert)
                 fahrenheit = self.round_it(fahrenheit)
                 answer = "{} degrees C is {} degrees F".format(to_convert, fahrenheit)
-                print("{} degrees C is {} degrees F".format(to_convert, fahrenheit))
+                print(answer)
 
 
             # Check and convert to Centigrade
@@ -104,7 +107,7 @@ class Converter:
                 to_convert = self.round_it(to_convert)
                 celsius = self.round_it(celsius)
                 answer = "{} degrees F is {} degrees C".format(to_convert, celsius)
-                print("{} degrees F is {} degrees C".format(to_convert, celsius))
+                print(answer)
 
             else:
                 # Input s invalid (too cold)!!
@@ -121,6 +124,9 @@ class Converter:
                 self.to_convert_entry.configure(bg=error)
 
             # Add Answer to list for History
+            if answer != "Too Cold":
+                self.all_calculation.append(answer)
+                print(self.all_calculation)
 
         except ValueError:
             self.converted_label.configure(text="Enter a number!!", fg="#ffafaf")
