@@ -71,14 +71,17 @@ class Export:
         self.filename_entry.grid(row=3, pady=10)
 
         # Save / Cancel Frame (row 4)
-        self.save_cancel_frame = Fr
-        self.filename_entry.grid(row=3, pady=10)
+        self.save_cancel_frame = Frame(self.export_frame)
+        self.save_cancel_frame.grid(row=5, pady=10)
 
-        # Dismiss button (row 2)
-        self.dismiss_btn = Button(self.export_frame, text="Dismiss",
-                                    width=10, bg="light blue", font="arial 10 bold",
+        # Save and Cancel Butttons (row 0 of save_cancel_frame)
+        self.save_button = Button(self.save_cancel_frame, text="Save")
+        self.save_button.grid(row=0, column=0)
+
+        # Cancel button
+        self.cancel_button = Button(self.save_cancel_frame, text="Cancel",
                                     command=partial(self.close_export, partner))
-        self.dismiss_btn.grid(row=2, pady=10)
+        self.cancel_button.grid(row=0, column=1)
 
     def close_export(self, partner):
         # Put export button back to normal..
