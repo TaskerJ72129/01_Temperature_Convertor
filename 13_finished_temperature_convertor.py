@@ -2,7 +2,7 @@ from tkinter import *
 from functools import partial  # To prevent unwanted windows
 
 import re
-import random
+
 
 class Converter:
     def __init__(self):
@@ -80,12 +80,10 @@ class Converter:
         self.help_button.grid(row=0, column=1)
     
     def help(self):
-        print("You asked for Help")
         get_help = Help(self)
         get_help.help_text.configure(text="Help text goes here")
 
     def temp_convert(self, low):
-        print(low)
 
         error = "#ffafaf"   # pale pink for errors
 
@@ -102,7 +100,6 @@ class Converter:
                 to_convert = self.round_it(to_convert)
                 fahrenheit = self.round_it(fahrenheit)
                 answer = "{} degrees C is {} degrees F".format(to_convert, fahrenheit)
-                print(answer)
 
 
             # Check and convert to Centigrade
@@ -111,12 +108,10 @@ class Converter:
                 to_convert = self.round_it(to_convert)
                 celsius = self.round_it(celsius)
                 answer = "{} degrees F is {} degrees C".format(to_convert, celsius)
-                print(answer)
 
             else:
                 # Input s invalid (too cold)!!
                 answer = "Too Cold!"
-                print("Too Cold")
                 has_errors = "yes"
 
             # Display answer
@@ -272,7 +267,6 @@ class History:
 class Export:
     def __init__(self, partner, calc_history):
 
-        print(calc_history)
 
         background = "light blue"
 
@@ -336,7 +330,7 @@ class Export:
         has_error = "no"
 
         filename = self.filename_entry.get()
-        print(filename)
+
 
         for letter in filename:
             if re.match(valid_char, letter):
@@ -359,7 +353,7 @@ class Export:
             self.save_error_label.config(text="Invalid filename - {}".format(problem))
             # Change entry box background to pink
             self.filename_entry.config(bg="#ffafaf")
-            print()
+
 
         else:
             # If there are no errors, generate text file and then clsoe dialogue

@@ -92,7 +92,7 @@ class History:
                                               "history. You can use the "
                                               "export button to save this "
                                               "data to a text file if " 
-                                              "desired")
+                                              "desired", wrap=250)
 
         # Label to display calculation history to user
         self.calc_label = Label(self.history_frame, text=history_string,
